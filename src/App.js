@@ -1,22 +1,36 @@
 import React from "react";
-import { Route, Routes, Link } from "react-router-dom";
+import { Route, Routes, NavLink } from "react-router-dom";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import BookRoutes from "./pages/BookRoutes";
+import "./styles.css";
+import { useLocation } from "react-router-dom";
 
 function App() {
+	const location = useLocation();
+	console.log(location);
 	return (
 		<>
 			<nav>
 				<ul>
 					<li>
-						<Link to="/">Home</Link>
+						<NavLink
+							to="/"
+							style={({ isActive }) => {
+								return isActive ? { color: "orange" } : null;
+							}}
+						>
+							Home
+						</NavLink>
 					</li>
 					<li>
-						<Link to="/books">Books</Link>
+						<NavLink end to="/books">
+							Books
+						</NavLink>
 					</li>
 				</ul>
 			</nav>
+			{location.state}
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/books/*" element={<BookRoutes />} />
