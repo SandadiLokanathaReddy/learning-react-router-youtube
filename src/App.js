@@ -14,14 +14,7 @@ function App() {
 			<nav>
 				<ul>
 					<li>
-						<NavLink
-							to="/"
-							style={({ isActive }) => {
-								return isActive ? { color: "orange" } : null;
-							}}
-						>
-							Home
-						</NavLink>
+						<NavLink to="/">Home</NavLink>
 					</li>
 					<li>
 						<NavLink end to="/books">
